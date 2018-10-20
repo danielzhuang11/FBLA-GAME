@@ -274,8 +274,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1401520350}
   - component: {fileID: 1401520349}
-  - component: {fileID: 1401520351}
-  - component: {fileID: 1401520352}
   m_Layer: 0
   m_Name: 162375
   m_TagString: Untagged
@@ -342,30 +340,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1401520351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1401520348}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac2d723952789574895d110dbbef1ec0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
---- !u!114 &1401520352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1401520348}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac2d723952789574895d110dbbef1ec0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
 --- !u!1 &1653960340
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,6 +352,7 @@ GameObject:
   - component: {fileID: 1653960342}
   - component: {fileID: 1653960341}
   - component: {fileID: 1653960345}
+  - component: {fileID: 1653960346}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -502,3 +477,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+--- !u!114 &1653960346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1653960340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5fdbcafe696bb649b0e346260c83239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shot: {fileID: 1309428654117334, guid: 810a6d6917bdce84b95ff2cf47c3cd09, type: 2}

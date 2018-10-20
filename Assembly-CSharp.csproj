@@ -54,6 +54,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Movement.cs" />
+     <Compile Include="Assets\Scripts\Projectile.cs" />
+     <Compile Include="Assets\Scripts\SHooting.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>D:/DanielCode/FBLA_Quiz/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
