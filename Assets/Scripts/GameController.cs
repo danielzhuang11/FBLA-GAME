@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
     public GameObject target;
@@ -108,7 +109,9 @@ public class GameController : MonoBehaviour {
     {
         if (System.Convert.ToChar(assignment[(int.Parse(name)) - 1]) == System.Convert.ToChar(goodAns))
         {
-            Debug.Log("You WIN!!");
+            
+                SceneManager.LoadScene("InsideShip");
+            
         }
         else
         {
