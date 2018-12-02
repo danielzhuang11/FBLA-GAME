@@ -29,11 +29,13 @@ public class Movement : MonoBehaviour {
         mousePosition.z = transform.position.z;
         transform.position = Vector3.MoveTowards(transform.position, mousePosition, speed * Time.deltaTime);
         healthDisplay.text = "HEALTH: " + health;
-      /*  if (health <= 0)
+        if (health <= 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+            SceneManager.LoadScene("GameOver");
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-        */
+        
 	}
     void OnTriggerEnter2D(Collider2D other)
     {

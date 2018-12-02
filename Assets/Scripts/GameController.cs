@@ -115,8 +115,8 @@ public class GameController : MonoBehaviour {
         }
         else
         {
-            
 
+            
             gameOver();
 
         }
@@ -125,7 +125,8 @@ public class GameController : MonoBehaviour {
     
     public void gameOver()
     {
-        Debug.Log("oopsie whoopsie it looks like you failed");
+        
+        SceneManager.LoadScene("GameOver");
     }
 
     static string newQuestion()
