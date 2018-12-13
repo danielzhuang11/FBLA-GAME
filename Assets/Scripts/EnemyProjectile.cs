@@ -16,7 +16,9 @@ public class EnemyProjectile : MonoBehaviour
 
 
         direction = (mousePosition - transform.position).normalized;
-        Destroy(gameObject, 2.0f);
+      
+        Destroy(gameObject, 2);
+
     }
 
     void Update()

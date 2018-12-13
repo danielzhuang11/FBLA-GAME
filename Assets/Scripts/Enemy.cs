@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
         direction = (playerPos.position - transform.position).normalized;
         transform.up = direction;
         transform.position = Vector2.MoveTowards(transform.position, thing, speed * Time.deltaTime);
-        if (Time.time > nextActionTime)
+        if (Time.timeSinceLevelLoad > nextActionTime)
         {
             nextActionTime += period;
             Instantiate(shot, enemypos.position, Quaternion.identity);

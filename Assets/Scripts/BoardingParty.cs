@@ -42,13 +42,16 @@ public class BoardingParty : MonoBehaviour {
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("PlayerBig"))
-        {
-            
 
-        }
 
         GameController gc = GameObject.Find("Game Controller").GetComponent<GameController>();
+        if (other.CompareTag("PlayerBig"))
+        {
+
+            gc.gameOver();
+        }
+
+        
 
         string thing="";
         if (other.CompareTag("Projectile") && gc.level == 2)

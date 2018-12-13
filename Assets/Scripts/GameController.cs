@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour {
     public int[] assignment = new int[] { 0, 0, 0, 0 };
     public string goodAns;
     private Transform enemyPos;
-   
+    
 	// Use this for initialization
     
     void Start()
@@ -21,15 +21,15 @@ public class GameController : MonoBehaviour {
         enemyPos = GameObject.Find("EnemyBig").GetComponent<Transform>();
         for (int i = 0; i < 3; i++)
         {
-           // Vector3 position = new Vector3(Random.Range(-100.0f, 100.0f), Random.Range(-100.0f, 100.0f), 0);
-            
+
             Instantiate(target, enemyPos.position, Quaternion.identity);
         }
 
-        
-
-
+        Dialogue dialogue = new Dialogue (new string[] {"This is the Admiral. There is a large enemy ship ahead that we need you to destroy","Good Luck"},"Admiral Cryane");
        
+       FindObjectOfType<dialogueManager>().StartDialogue(dialogue);
+        
+        
 
 		
 	}
