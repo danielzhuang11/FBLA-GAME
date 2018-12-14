@@ -48,3 +48,6 @@ TagManager:
   - name: Picture
     uniqueID: 573292315
     locked: 0
+  - name: wall
+    uniqueID: 4240303983
+    locked: 0
