@@ -1,12 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-<<<<<<< HEAD
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{AAE8E563-AC86-E7C7-DED5-6C2BC57A1F33}"
-=======
-# Visual Studio 2017
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FBLA-GAME", "FBLA-GAME.csproj", "{083CEEAE-E4EC-288D-13EF-CF964C7E57D0}"
->>>>>>> 57e259fef905a3b4a3d3391b64f37d2944938ea2
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,10 +9,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{083CEEAE-E4EC-288D-13EF-CF964C7E57D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{083CEEAE-E4EC-288D-13EF-CF964C7E57D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{083CEEAE-E4EC-288D-13EF-CF964C7E57D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{083CEEAE-E4EC-288D-13EF-CF964C7E57D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAE8E563-AC86-E7C7-DED5-6C2BC57A1F33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAE8E563-AC86-E7C7-DED5-6C2BC57A1F33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAE8E563-AC86-E7C7-DED5-6C2BC57A1F33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAE8E563-AC86-E7C7-DED5-6C2BC57A1F33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
