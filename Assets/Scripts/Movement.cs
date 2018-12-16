@@ -21,21 +21,24 @@ public class Movement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Quaternion rot = Quaternion.LookRotation(transform.position - mousePosition, Vector3.forward);
-        transform.rotation = rot;
-        transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
-        
-        mousePosition.z = transform.position.z;
-        transform.position = Vector3.MoveTowards(transform.position, mousePosition, speed * Time.deltaTime);
-        healthDisplay.text = "HEALTH: " + health;
-        if (health <= 0)
+        if (!PauseMenu.GameIsPaused && !dialogueManager.dialogueActive)
         {
 
-            SceneManager.LoadScene("GameOver");
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Quaternion rot = Quaternion.LookRotation(transform.position - mousePosition, Vector3.forward);
+            transform.rotation = rot;
+            transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
+
+            mousePosition.z = transform.position.z;
+            transform.position = Vector3.MoveTowards(transform.position, mousePosition, speed * Time.deltaTime);
+            healthDisplay.text = "HEALTH: " + health;
+            if (health <= 0)
+            {
+
+                SceneManager.LoadScene("GameOver");
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
         }
-        
 	}
     void OnTriggerEnter2D(Collider2D other)
     {

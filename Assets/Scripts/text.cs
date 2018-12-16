@@ -15,12 +15,12 @@ public class text : MonoBehaviour {
     {
         transform.position = (target.transform.position + new Vector3(2.0f, -0.5f,0.0f));
 
-        GameObject levels = GameObject.Find("Game Controller");
-        GameController script = levels.GetComponent<GameController>();
-        if (script.level >= 2)
+        //GameObject levels = GameObject.Find("Game Controller");
+ 
+        if (GameController.level >= 2)
         {
 
-            char answer = System.Convert.ToChar(script.assignment[(int.Parse(this.gameObject.name)) - 1]);
+            char answer = System.Convert.ToChar(GameController.assignment[(int.Parse(this.gameObject.name)) - 1]);
            answers.text = answer.ToString();
             
         }

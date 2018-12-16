@@ -8,8 +8,8 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour {
     public GameObject target;
     private BoardingParty selector;
-    public int level = 1;
-    public int[] assignment = new int[] { 0, 0, 0, 0 };
+    public static int level = 1;
+    public static int[] assignment = new int[] { 0, 0, 0, 0 };
     public string goodAns;
     private Transform enemyPos;
     
@@ -24,15 +24,14 @@ public class GameController : MonoBehaviour {
 
             Instantiate(target, enemyPos.position, Quaternion.identity);
         }
-
-        Dialogue dialogue = new Dialogue (new string[] {"This is the Admiral. There is a large enemy ship ahead that we need you to destroy","Good Luck"},"Admiral Cryane");
-       
-       FindObjectOfType<dialogueManager>().StartDialogue(dialogue);
         
         
 
-		
+        
+        Dialogue dialogue = new Dialogue(new string[] { "This is the Admiral. There is a large enemy ship ahead that we need you to destroy", "Good Luck" }, "Admiral Cryane");
+        FindObjectOfType<dialogueManager>().StartDialogue(dialogue);
 	}
+   
     
 	
 	// Update is called once per frame
@@ -61,8 +60,17 @@ public class GameController : MonoBehaviour {
    
     public void stageTwo()
     {
-         goodAns = newQuestion();
+
+        Dialogue dialogue1 = new Dialogue(new string[] { "Congradulations. You have defeated the first wave", "For your next task, there are 4 incoming enemies.", "One of them is the enemy boarding party.", "The other three contain a bomb that will decimate all life.", "Deocde the intel we provided to know which ship to shoot" }
+           , "Admiral Cryane");
+
+        FindObjectOfType<dialogueManager>().StartDialogue(dialogue1);
+       // goodAns = newQuestion();
+        
+       
+        
         int rand = (Random.Range(1,4));
+
         
         for (int i = 0; i < assignment.Length; i++)
         {
@@ -84,22 +92,10 @@ public class GameController : MonoBehaviour {
         }
 
 
-        GameObject party = GameObject.Find("one");
-        BoardingParty partyScript = party.GetComponent<BoardingParty>();
-        partyScript.active = true;
-
-         party = GameObject.Find("two");
-         partyScript = party.GetComponent<BoardingParty>();
-        partyScript.active = true;
-
-        party = GameObject.Find("three");
-        partyScript = party.GetComponent<BoardingParty>();
-        partyScript.active = true;
-
-        party = GameObject.Find("four");
-        partyScript = party.GetComponent<BoardingParty>();
-        partyScript.active = true;
-
+        GameObject.Find("one").GetComponent<BoardingParty>().active = true;
+        GameObject.Find("two").GetComponent<BoardingParty>().active = true;
+        GameObject.Find("three").GetComponent<BoardingParty>().active = true;
+        GameObject.Find("four").GetComponent<BoardingParty>().active = true;
 
         
      }
@@ -129,7 +125,7 @@ public class GameController : MonoBehaviour {
         SceneManager.LoadScene("GameOver");
     }
 
-    static string newQuestion()
+    public  string newQuestion()
     {
         
 
@@ -145,6 +141,8 @@ public class GameController : MonoBehaviour {
         Text question = GameObject.Find("question").GetComponent<Text>();
          
         question.text = lines[random];
+
+
         Debug.Log(lines[random + 1]);
          return (lines[random + 1]);
        

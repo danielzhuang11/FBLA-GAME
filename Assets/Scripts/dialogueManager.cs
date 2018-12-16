@@ -8,11 +8,13 @@ public class dialogueManager : MonoBehaviour {
     public Text nameText;
     public Text dialoguetext;
     private Queue<string> sentences;
-	// Use this for initialization
-	
-
+    public static bool dialogueActive;
+    public GameObject nextbtn;
      public void StartDialogue(Dialogue dialogue)
      {
+         nextbtn.SetActive(true);
+         dialogueActive = true;
+         PauseMenu.GameIsPaused = true;
          sentences = new Queue<string>();
           nameText.text = dialogue.name;
           sentences.Clear();
@@ -39,7 +41,18 @@ public class dialogueManager : MonoBehaviour {
 
      void EndDialogue()
      {
+         nextbtn.SetActive(false);
+         PauseMenu.GameIsPaused = false;
          dialoguetext.text ="END TRANSMISION";
+
+         if (GameController.level == 2)
+         {
+
+
+             GameController thing = GameObject.Find("Game Controller").GetComponent<GameController>();
+             thing.goodAns = thing.newQuestion();
+         }
+         dialogueActive = false;
      }
 
 }

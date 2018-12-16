@@ -14,15 +14,19 @@ public class SHooting : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-         var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-         if (Vector2.Distance(transform.position, mousePosition) > 0.2f)
-         {
 
-             if (Input.GetMouseButtonDown(0))
-             {
-                 Instantiate(shot, playerpos.position, Quaternion.identity);
-             }
-         }
+        if (!PauseMenu.GameIsPaused && !dialogueManager.dialogueActive)
+        {
+            var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (Vector2.Distance(transform.position, mousePosition) > 0.2f)
+            {
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Instantiate(shot, playerpos.position, Quaternion.identity);
+                }
+            }
+        }
 	}
 
    

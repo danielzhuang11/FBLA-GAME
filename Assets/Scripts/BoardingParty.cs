@@ -11,6 +11,7 @@ public class BoardingParty : MonoBehaviour {
     public float speed;
 
 	// Use this for initialization
+
 	void Start () {
         
         
@@ -23,10 +24,8 @@ public class BoardingParty : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (active)
+        if (active && (!PauseMenu.GameIsPaused && !dialogueManager.dialogueActive))
         {
-           
-           
             transform.up = direction;
             transform.position += direction * speed * Time.deltaTime;
         }
@@ -54,7 +53,7 @@ public class BoardingParty : MonoBehaviour {
         
 
         string thing="";
-        if (other.CompareTag("Projectile") && gc.level == 2)
+        if (other.CompareTag("Projectile") && GameController.level == 2)
         {
             
             if (this.gameObject.name == "one") 
