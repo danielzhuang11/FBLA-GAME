@@ -11,7 +11,6 @@ public class Enemy : MonoBehaviour
     Vector3 direction;
     public Transform playerPos;
     private Transform enemypos;
-    
     private float nextActionTime = 0.0f;
     private float period = 0.0f;
     public float speed;
@@ -28,17 +27,19 @@ public class Enemy : MonoBehaviour
     
     void Update()
     {
-        direction = (playerPos.position - transform.position).normalized;
-        transform.up = direction;
-        transform.position = Vector2.MoveTowards(transform.position, thing, speed * Time.deltaTime);
-        if (Time.time > nextActionTime)
+        if (!PauseMenu.GameIsPaused && !dialogueManager.dialogueActive)
         {
-            nextActionTime += period;
-            Instantiate(shot, enemypos.position, Quaternion.identity);
-            thing = playerPos.position + new Vector3(Random.Range(-5f, 5.0f), Random.Range(-5f, 5.0f), Random.Range(-5f, 5.0f));
-        }
-       
-                
+            direction = (playerPos.position - transform.position).normalized;
+            transform.up = direction;
+            transform.position = Vector2.MoveTowards(transform.position, thing, speed * Time.deltaTime);
+            if (Time.timeSinceLevelLoad > nextActionTime)
+            {
+                nextActionTime += period;
+                Instantiate(shot, enemypos.position, Quaternion.identity);
+                thing = playerPos.position + new Vector3(Random.Range(-5f, 5.0f), Random.Range(-5f, 5.0f), Random.Range(-5f, 5.0f));
+            }
+
+        }   
             
         
     }
