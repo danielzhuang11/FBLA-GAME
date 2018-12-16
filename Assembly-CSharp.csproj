@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
     <Compile Include="Assets\Scripts\Questions.cs" />
+    <Compile Include="Assets\Scripts\RoomSpawnPoint.cs" />
     <Compile Include="Assets\Scripts\SHooting.cs" />
     <Compile Include="Assets\Scripts\text.cs" />
     <None Include="Assets\temp\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
