@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - PlayerBig
   - boardingParty
+  - Rooms
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
