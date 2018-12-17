@@ -12,6 +12,7 @@ public class dialogueManager : MonoBehaviour {
     public GameObject nextbtn;
      public void StartDialogue(Dialogue dialogue)
      {
+
          nextbtn.SetActive(true);
          dialogueActive = true;
          PauseMenu.GameIsPaused = true;
@@ -47,8 +48,6 @@ public class dialogueManager : MonoBehaviour {
 
          if (GameController.level == 2)
          {
-
-
              GameController thing = GameObject.Find("Game Controller").GetComponent<GameController>();
              thing.goodAns = thing.newQuestion();
          }
