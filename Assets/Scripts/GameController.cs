@@ -12,12 +12,19 @@ public class GameController : MonoBehaviour {
     public static int[] assignment = new int[] { 0, 0, 0, 0 };
     public string goodAns;
     private Transform enemyPos;
+
+
+    public GameObject pauseMenuPrefab;
+    private GameObject pausemenuInstance;
+    private Canvas canvas;
     
 	// Use this for initialization
     
     void Start()
     {
-        
+        level = 1;
+        assignment = new int[] { 0, 0, 0, 0 };
+
         enemyPos = GameObject.Find("EnemyBig").GetComponent<Transform>();
         for (int i = 0; i < 3; i++)
         {
@@ -65,7 +72,7 @@ public class GameController : MonoBehaviour {
            , "Admiral Cryane");
 
         FindObjectOfType<dialogueManager>().StartDialogue(dialogue1);
-       // goodAns = newQuestion();
+
         
        
         
@@ -100,19 +107,50 @@ public class GameController : MonoBehaviour {
         
      }
 
+    void stageThree()
+    {
+
+        SceneManager.LoadScene("InsideShipNew");
+        level = 3;
+
+
+
+    }
+    public void Awake()
+    {
+        canvas = GetComponent<Canvas>();
+
+    }
+
+
+    public void CreatePauseMenu()
+    {
+
+        if (pausemenuInstance == null)
+        {
+            Instantiate(pauseMenuPrefab, canvas.transform);
+
+
+        }
+        else
+        {
+
+            pausemenuInstance.SetActive(true);
+
+        }
+    }
 
     public void checkAns(string name)
     {
         if (System.Convert.ToChar(assignment[(int.Parse(name)) - 1]) == System.Convert.ToChar(goodAns))
         {
-            
-                SceneManager.LoadScene("InsideShip");
+            DontDestroyOnLoad(transform.gameObject);
+            stageThree();
             
         }
         else
         {
 
-            
             gameOver();
 
         }
