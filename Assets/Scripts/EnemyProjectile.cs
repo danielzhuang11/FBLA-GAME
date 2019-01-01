@@ -11,11 +11,11 @@ public class EnemyProjectile : MonoBehaviour
    
     void Start()
     {
-        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0.0F;
+       // mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+       // mousePosition.z = 0.0F;
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
-
-        direction = (mousePosition - transform.position).normalized;
+        direction = (target.position - transform.position).normalized;
       
         Destroy(gameObject, 2);
 
@@ -24,7 +24,7 @@ public class EnemyProjectile : MonoBehaviour
     void Update()
     {
 
-
+       // transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         transform.up = direction;
         transform.position += direction * speed * Time.deltaTime;
     }

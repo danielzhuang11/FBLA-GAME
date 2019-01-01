@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - PlayerBig
   - boardingParty
+  - Rooms
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
@@ -47,4 +49,7 @@ TagManager:
     locked: 0
   - name: Picture
     uniqueID: 573292315
+    locked: 0
+  - name: wall
+    uniqueID: 4240303983
     locked: 0

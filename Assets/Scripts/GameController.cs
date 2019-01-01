@@ -110,7 +110,7 @@ public class GameController : MonoBehaviour {
     void stageThree()
     {
 
-        SceneManager.LoadScene("InsideShip");
+        SceneManager.LoadScene("InsideShipNew");
         level = 3;
 
 
