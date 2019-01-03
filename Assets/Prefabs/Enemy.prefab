@@ -45,7 +45,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4335248011031768
 Transform:
   m_ObjectHideFlags: 1
@@ -67,7 +67,7 @@ Transform:
   m_GameObject: {fileID: 1796230433111596}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.68, y: 19.07, z: 0}
-  m_LocalScale: {x: 0.5150106, y: 0.41515476, z: 1}
+  m_LocalScale: {x: 0.52, y: 0.51, z: 1}
   m_Children:
   - {fileID: 4335248011031768}
   m_Father: {fileID: 0}
@@ -109,7 +109,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.25, y: 2.38}
+    oldSize: {x: 1.024, y: 1.024}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   shot: {fileID: 1114752329470446, guid: f542f388c9b092549a4809d0e79246fd, type: 2}
   playerPos: {fileID: 0}
   speed: 6
-  enemiesDefeated: 0
+  explosion: {fileID: 1280240331523082, guid: 45ae5851ef2832044bba82850372d67b, type: 2}
 --- !u!212 &212348628577272964
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -211,13 +211,13 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 573292315
-  m_SortingLayer: 1
+  m_SortingLayerID: 1152134415
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a06efd8c5b5b2134d8767ba3703ad00c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3c6d6674bfcb5ac498628dff731a28f5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
+  m_FlipX: 1
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5

@@ -13,7 +13,7 @@ public class text : MonoBehaviour {
  }
     void Update () 
     {
-        transform.position = (target.transform.position + new Vector3(2.0f, -0.5f,0.0f));
+       transform.position = (target.transform.position);
 
         //GameObject levels = GameObject.Find("Game Controller");
  

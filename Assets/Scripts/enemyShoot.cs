@@ -24,7 +24,7 @@ public class enemyShoot : MonoBehaviour {
             Instantiate(shot, transform.position, Quaternion.identity);
                 count = 0;
             }
-            Debug.Log(count);
+           
         }
     
     }

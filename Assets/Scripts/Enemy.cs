@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     private float period = 0.0f;
     public float speed;
     private Vector3 thing;
+    public GameObject explosion;
  
 
     void Start()
@@ -48,7 +49,11 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Projectile") )
         {
+
+            Instantiate(explosion, gameObject.transform.position , Quaternion.identity);
+           
             Destroy(gameObject);
+
      
         }
     }
