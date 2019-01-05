@@ -621,12 +621,12 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
-    Collab: 1
+    Collab: 0
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
   cloudProjectId: 4b27705b-eda4-41fd-a691-ab504c9e8712
-  projectName: Space Shooter FREE
+  projectName: FBLA_Quiz
   organizationId: unity_-pykllba1s2_ma
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

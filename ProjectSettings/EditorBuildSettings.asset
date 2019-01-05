@@ -5,18 +5,21 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/GameOver.unity
-    guid: 98aec646a4a5ea94087ec1a41690afcf
+    path: Assets/Scenes/Victory.unity
+    guid: 3c4ca73bfef8abf468b639b54cddbf77
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 03cc436d71b32f14d826dfdde20075e4
   - enabled: 1
-    path: Assets/Scenes/StageOne.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/Victory.unity
-    guid: 3c4ca73bfef8abf468b639b54cddbf77
+    path: Assets/Scenes/SceneOne.unity
+    guid: 4a34a7f53f806084991bd427d8873a53
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/InsideShipNew.unity
     guid: 2786d596cce3bf34aab92a69e3bb6c6b

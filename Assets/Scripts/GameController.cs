@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using System.IO;
 using UnityEngine.SceneManagement;
 
@@ -12,21 +11,31 @@ public class GameController : MonoBehaviour {
     public static int[] assignment = new int[] { 0, 0, 0, 0 };
     public string goodAns;
     private Transform enemyPos;
+    public static int streak =0;
 
-
-    public GameObject pauseMenuPrefab;
-    private GameObject pausemenuInstance;
+    public GameObject gameOverUI;
+    new public Camera camera;
+    public GameObject explosion;
+    public Animator animator;
+    public GameObject panel;
+    public GameObject a;
+    public GameObject b;
+    public GameObject c;
+    public GameObject d;
+   // public GameObject pauseMenuPrefab;
+  //  private GameObject pausemenuInstance;
     private Canvas canvas;
-    
+   
 	// Use this for initialization
     
     void Start()
     {
+         
         level = 1;
         assignment = new int[] { 0, 0, 0, 0 };
 
         enemyPos = GameObject.Find("EnemyBig").GetComponent<Transform>();
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < streak +2; i++)
         {
 
             Instantiate(target, enemyPos.position, Quaternion.identity);
@@ -35,15 +44,14 @@ public class GameController : MonoBehaviour {
         
 
         
-        Dialogue dialogue = new Dialogue(new string[] { "This is the Admiral. There is a large enemy ship ahead that we need you to destroy", "Good Luck" }, "Admiral Cryane");
+        Dialogue dialogue = new Dialogue(new string[] { "This is the Admiral. There is a large enemy ship ahead that we need you to destroy.", "First you must stop their defence", "Good luck and stay tuned for more assignments." }, "Admiral Cryane");
         FindObjectOfType<dialogueManager>().StartDialogue(dialogue);
 	}
-   
-    
+
 	
 	// Update is called once per frame
 	void Update () {
-
+        //starts stage 2
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
         
@@ -54,135 +62,109 @@ public class GameController : MonoBehaviour {
         }
 
 
-        
-
-        
-
-
 	}
 
-     
-
-
-   
+  
     public void stageTwo()
     {
-
-        Dialogue dialogue1 = new Dialogue(new string[] { "Congradulations. You have defeated the first wave", "For your next task, there are 4 incoming enemies.", "One of them is the enemy boarding party.", "The other three contain a bomb that will decimate all life.", "Deocde the intel we provided to know which ship to shoot" }
+        //starts second dialogue
+        panel.SetActive(true);
+        Dialogue dialogue1 = new Dialogue(new string[] { "Congratulations. You have defeated the first wave", "For your next task, there are 4 incoming enemies.", "One of them is the enemy boarding party.", "The other three ships are decoys", "Deocde the intel we provided to know which ship to shoot", "But make sure to shoot the right ship because you only have 1 missile capable of breaking throught their armor." }
            , "Admiral Cryane");
 
         FindObjectOfType<dialogueManager>().StartDialogue(dialogue1);
+   
+        //resets player and camera for next stage
+        GameObject player = GameObject.Find("Player");
+        player.transform.position = new Vector3(-30f, -40f, player.transform.position.z);
 
-        
-       
-        
-        int rand = (Random.Range(1,4));
+        player.transform.rotation = Quaternion.Euler(0, 0, 0);
 
-        
-        for (int i = 0; i < assignment.Length; i++)
-        {
-            while(assignment[i] == 0)
-            {
-                rand = (char)(Random.Range(65, 69));
-                bool taken = false;
-                for (int k = 0; k < assignment.Length; k++)
-                {
-                    if (assignment[k] == rand) { taken = true; }
-                    
-                }
-                if (!taken)
-                {
-                    assignment[i] = rand;
-                    
-                }
-            }
-        }
+        camera.orthographicSize = 10.0f;
+        camera.transform.position = player.transform.position + new Vector3(0.5f, 8f, -2f);
 
-
-        GameObject.Find("one").GetComponent<BoardingParty>().active = true;
-        GameObject.Find("two").GetComponent<BoardingParty>().active = true;
-        GameObject.Find("three").GetComponent<BoardingParty>().active = true;
-        GameObject.Find("four").GetComponent<BoardingParty>().active = true;
-
-        
+        // activates the questions
+        a.SetActive(true);
+        b.SetActive(true);
+        c.SetActive(true);
+        d.SetActive(true);
      }
+
+    
 
     void stageThree()
     {
 
-        SceneManager.LoadScene("InsideShipNew");
+        StartCoroutine(switchScene());
         level = 3;
+        //SceneManager.LoadScene("InsideShipNew");
+        
 
 
 
     }
-    public void Awake()
+
+    IEnumerator switchScene()
     {
-        canvas = GetComponent<Canvas>();
-
+        
+        yield return new WaitForSeconds(3);
+        animator.SetTrigger("fade_out");
+       // SceneManager.LoadScene("InsideShipNew");
     }
-
-
-    public void CreatePauseMenu()
-    {
-
-        if (pausemenuInstance == null)
-        {
-            Instantiate(pauseMenuPrefab, canvas.transform);
-
-
-        }
-        else
-        {
-
-            pausemenuInstance.SetActive(true);
-
-        }
-    }
-
     public void checkAns(string name)
     {
-        if (System.Convert.ToChar(assignment[(int.Parse(name)) - 1]) == System.Convert.ToChar(goodAns))
+
+
+        if (GameObject.Find("AParty") != null && System.Convert.ToChar(goodAns) != 'A')
         {
-            DontDestroyOnLoad(transform.gameObject);
+            GameObject.Find("AParty").GetComponent<BoardingParty>().flyback();
+        }
+        if (GameObject.Find("BParty") != null && System.Convert.ToChar(goodAns) != 'B')
+        {
+            GameObject.Find("BParty").GetComponent<BoardingParty>().flyback();
+        }
+        if (GameObject.Find("CParty") != null && System.Convert.ToChar(goodAns) != 'C')
+        {
+            GameObject.Find("CParty").GetComponent<BoardingParty>().flyback();
+        }
+        if (GameObject.Find("DParty") != null && System.Convert.ToChar(goodAns) != 'D')
+        {
+            GameObject.Find("DParty").GetComponent<BoardingParty>().flyback();
+        }
+        if (System.Convert.ToChar(name) == System.Convert.ToChar(goodAns))
+        {
+
             stageThree();
             
         }
-        else
-        {
-
-            gameOver();
-
-        }
+       
     }
 
     
     public void gameOver()
     {
-        
-        SceneManager.LoadScene("GameOver");
-    }
-
-    public  string newQuestion()
-    {
-        
-
-        string path = "Assets/Resources/test.txt";
-        string[] lines = System.IO.File.ReadAllLines(path);
-
-        int random=1;
-        while (random % 2 != 0)
+ 
+        streak = 0;
+        if (level == 1)
         {
-            random = Random.Range(0, lines.Length);
+            GameObject player = GameObject.FindWithTag("Player");
+            explosion = Instantiate(explosion, player.transform.position, Quaternion.identity);
+            Destroy(explosion, 1.0f);
+            Destroy(player);
+
+            
+        }
+        else
+        {
+            GameObject playerBig = GameObject.FindWithTag("PlayerBig");
+            explosion = Instantiate(explosion, playerBig.transform.position, Quaternion.identity);
+            Destroy(explosion, 1.0f);
+            Destroy(playerBig);
+
         }
 
-        Text question = GameObject.Find("question").GetComponent<Text>();
-         
-        question.text = lines[random];
-
-
-        Debug.Log(lines[random + 1]);
-         return (lines[random + 1]);
-       
+        gameOverUI.SetActive(true);
     }
+
+    
 }

@@ -4,7 +4,7 @@ using System.Collections;
 public class CameraController : MonoBehaviour
 {
 
-    public GameObject player;       //Public variable to store a reference to the player game object
+    public GameObject player; 
 
     public BoxCollider2D boundBox;
     private Vector3 minBounds;
@@ -13,9 +13,8 @@ public class CameraController : MonoBehaviour
     private float halfHeight;
     private float halfWidth;
 
-    private Vector3 offset;         //Private variable to store the offset distance between the player and camera
+    private Vector3 offset;         //offset distance between player and camera
 
-    // Use this for initialization
     void Start()
     {
         minBounds = boundBox.bounds.min;
@@ -32,11 +31,14 @@ public class CameraController : MonoBehaviour
     void LateUpdate()
     {
         // Set the position of the camera's transform to be the same as the player's, but offset by the calculated offset distance.
-        transform.position = player.transform.position + offset;
+        if (GameObject.Find("Player") != null && GameController.level != 2)
+        {
+            transform.position = player.transform.position + offset;
 
-     
-       float clampedX = Mathf.Clamp(transform.position.x, minBounds.x + halfWidth, maxBounds.x - halfWidth);
-        float clampedY = Mathf.Clamp(transform.position.y, minBounds.y + halfHeight, maxBounds.y - halfHeight);
-        transform.position = new Vector3(clampedX, clampedY, transform.position.z);
+
+            float clampedX = Mathf.Clamp(transform.position.x, minBounds.x + halfWidth, maxBounds.x - halfWidth);
+            float clampedY = Mathf.Clamp(transform.position.y, minBounds.y + halfHeight, maxBounds.y - halfHeight);
+            transform.position = new Vector3(clampedX, clampedY, transform.position.z);
+        }
     }
 }
