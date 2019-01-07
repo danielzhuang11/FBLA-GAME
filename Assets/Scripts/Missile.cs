@@ -8,6 +8,7 @@ public class Missile : MonoBehaviour {
     Vector3 direction;
     // Use this for initialization
     public GameObject missile;
+    public GameObject explosion;
 
     public void FireMissile(GameObject Target)
     {
@@ -30,6 +31,8 @@ public class Missile : MonoBehaviour {
     {
         if (other.CompareTag("Enemy") || other.CompareTag("boardingParty"))
         {
+            explosion = Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
+            Destroy(explosion, 1.0f);
             Destroy(gameObject);
 
         }

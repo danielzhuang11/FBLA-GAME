@@ -25,6 +25,7 @@ public class Movement : MonoBehaviour {
 	
 	void Update () {
         GameController controller = GameObject.Find("Game Controller").GetComponent<GameController>();
+        //death
         if (health <= 0)
         {
             

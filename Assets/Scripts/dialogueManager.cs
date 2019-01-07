@@ -55,6 +55,7 @@ public class dialogueManager : MonoBehaviour {
          }
          if (GameController.level == 2)
          {
+             GameObject.Find("name").SetActive(false);
              fireChoose.SetActive(true);
              GameController thing = GameObject.Find("Game Controller").GetComponent<GameController>();
              thing.goodAns = GameObject.Find("Game Controller").GetComponent<Questions>().newQuestion();

@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\addRoom.cs" />
+     <Compile Include="Assets\Scripts\AudioManager.cs" />
      <Compile Include="Assets\Scripts\BoardingParty.cs" />
      <Compile Include="Assets\Scripts\btnChangeScene.cs" />
      <Compile Include="Assets\Scripts\cameraControl.cs" />
@@ -77,6 +78,7 @@
      <Compile Include="Assets\Scripts\Questions.cs" />
      <Compile Include="Assets\Scripts\RoomSpawnPoint.cs" />
      <Compile Include="Assets\Scripts\RoomTemplates.cs" />
+     <Compile Include="Assets\Scripts\Sound.cs" />
      <Compile Include="Assets\Scripts\text.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />

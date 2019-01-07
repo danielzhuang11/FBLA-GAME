@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Projectile") )
+        if (other.CompareTag("Projectile"))
         {
 
             explosion = Instantiate(explosion, gameObject.transform.position , Quaternion.identity);

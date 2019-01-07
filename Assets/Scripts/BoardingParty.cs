@@ -46,10 +46,11 @@ public class BoardingParty : MonoBehaviour {
     {
         
         GameController gc = GameObject.Find("Game Controller").GetComponent<GameController>();
+        
         if (other.CompareTag("PlayerBig"))
         {
-
             gc.gameOver();
+            flyback();
         }
 
      
@@ -57,6 +58,7 @@ public class BoardingParty : MonoBehaviour {
         string thing="";
         if (other.CompareTag("Projectile"))
         {
+            Destroy(gameObject);
             Destroy(other);
             if (this.gameObject.name == "AParty") 
             {thing = "A";} 
@@ -70,7 +72,7 @@ public class BoardingParty : MonoBehaviour {
             gc.checkAns(thing);
             
         }
-        Destroy(gameObject);
+      
     }
 
     

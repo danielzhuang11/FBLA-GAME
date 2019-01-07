@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour {
     
     void Start()
     {
-         
+        AudioManager.instance.playRand();
         level = 1;
         assignment = new int[] { 0, 0, 0, 0 };
 
@@ -44,7 +44,7 @@ public class GameController : MonoBehaviour {
         
 
         
-        Dialogue dialogue = new Dialogue(new string[] { "This is the Admiral. There is a large enemy ship ahead that we need you to destroy.", "First you must stop their defence", "Good luck and stay tuned for more assignments." }, "Admiral Cryane");
+        Dialogue dialogue = new Dialogue(new string[] { "This is the Captain. There is a large enemy ship ahead that we need you to eliminate.", "First you must stop their defending fighters", "Good luck and stay tuned for more assignments." }, "-Captain Cryane");
         FindObjectOfType<dialogueManager>().StartDialogue(dialogue);
 	}
 
@@ -69,8 +69,8 @@ public class GameController : MonoBehaviour {
     {
         //starts second dialogue
         panel.SetActive(true);
-        Dialogue dialogue1 = new Dialogue(new string[] { "Congratulations. You have defeated the first wave", "For your next task, there are 4 incoming enemies.", "One of them is the enemy boarding party.", "The other three ships are decoys", "Deocde the intel we provided to know which ship to shoot", "But make sure to shoot the right ship because you only have 1 missile capable of breaking throught their armor." }
-           , "Admiral Cryane");
+        Dialogue dialogue1 = new Dialogue(new string[] { "Congratulations. You have defeated the first wave", "The enemy is launching a counterattack of four enemies", "Our intel has determined that one of them is the enemy boarding party.", "The other three ships are decoys", "Deocde the intercepted intel we provided to know which ship to shoot", "Make sure to shoot the right ship because you only have 1 missile capable of breaking through their armor." }
+           , "-Captain Cryane");
 
         FindObjectOfType<dialogueManager>().StartDialogue(dialogue1);
    
@@ -91,19 +91,15 @@ public class GameController : MonoBehaviour {
      }
 
     
-
+    //moves on to 3rd stage
     void stageThree()
     {
 
         StartCoroutine(switchScene());
         level = 3;
         //SceneManager.LoadScene("InsideShipNew");
-        
-
-
-
     }
-
+    //waits 3 seconds for player to reach enemy before switching scenes
     IEnumerator switchScene()
     {
         
@@ -111,6 +107,7 @@ public class GameController : MonoBehaviour {
         animator.SetTrigger("fade_out");
        // SceneManager.LoadScene("InsideShipNew");
     }
+    //checks if player has hit the correct ship and switches 
     public void checkAns(string name)
     {
 

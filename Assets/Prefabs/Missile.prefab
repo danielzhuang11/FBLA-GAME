@@ -102,6 +102,7 @@ MonoBehaviour:
   speed: 10
   target: {fileID: 0}
   missile: {fileID: 1769829301247842}
+  explosion: {fileID: 1981774452263784, guid: 69bc9de1566254e4db3ef4d734a7fbcd, type: 2}
 --- !u!212 &212532336027867642
 SpriteRenderer:
   m_ObjectHideFlags: 1
