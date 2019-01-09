@@ -8,11 +8,8 @@ public class GameController : MonoBehaviour {
     public GameObject target;
     private BoardingParty selector;
     public static int level = 1;
-    public static int[] assignment = new int[] { 0, 0, 0, 0 };
     public string goodAns;
     private Transform enemyPos;
-    public static int streak =0;
-
     public GameObject gameOverUI;
     new public Camera camera;
     public GameObject explosion;
@@ -22,6 +19,7 @@ public class GameController : MonoBehaviour {
     public GameObject b;
     public GameObject c;
     public GameObject d;
+    public GameObject fireChoose;
    // public GameObject pauseMenuPrefab;
   //  private GameObject pausemenuInstance;
     private Canvas canvas;
@@ -32,20 +30,27 @@ public class GameController : MonoBehaviour {
     {
         AudioManager.instance.playRand();
         level = 1;
-        assignment = new int[] { 0, 0, 0, 0 };
 
         enemyPos = GameObject.Find("EnemyBig").GetComponent<Transform>();
-        for (int i = 0; i < streak +2; i++)
+        for (int i = 0; i < UponLoadTitle.streak +2; i++)
         {
 
             Instantiate(target, enemyPos.position, Quaternion.identity);
         }
-        
-        
 
-        
-        Dialogue dialogue = new Dialogue(new string[] { "This is the Captain. There is a large enemy ship ahead that we need you to eliminate.", "First you must stop their defending fighters", "Good luck and stay tuned for more assignments." }, "-Captain Cryane");
-        FindObjectOfType<dialogueManager>().StartDialogue(dialogue);
+
+
+
+        //starts first dialogue if dialogue is toggled
+        if (Settings.dialogueToggle)
+        {
+            Dialogue dialogue = new Dialogue(new string[] { "This is the Captain. There is a large enemy ship ahead that we need you to eliminate.", "First you must stop their defending fighters", "Good luck and stay tuned for more assignments." }, "-Captain Cryane");
+            FindObjectOfType<dialogueManager>().StartDialogue(dialogue);
+        }
+        else
+        {
+            panel.SetActive(false);
+        }
 	}
 
 	
@@ -67,19 +72,26 @@ public class GameController : MonoBehaviour {
   
     public void stageTwo()
     {
-        //starts second dialogue
+        //starts second dialogue if it is toggled
         panel.SetActive(true);
-        Dialogue dialogue1 = new Dialogue(new string[] { "Congratulations. You have defeated the first wave", "The enemy is launching a counterattack of four enemies", "Our intel has determined that one of them is the enemy boarding party.", "The other three ships are decoys", "Deocde the intercepted intel we provided to know which ship to shoot", "Make sure to shoot the right ship because you only have 1 missile capable of breaking through their armor." }
-           , "-Captain Cryane");
 
-        FindObjectOfType<dialogueManager>().StartDialogue(dialogue1);
-   
+        if (Settings.dialogueToggle)
+        {
+            Dialogue dialogue1 = new Dialogue(new string[] { "Congratulations. You have defeated the first wave", "The enemy is launching a counterattack of four enemies", "Our intel has determined that one of them is the enemy boarding party.", "The other three ships are decoys", "Deocde the intercepted intel we provided to know which ship to shoot", "Make sure to shoot the right ship because you only have 1 missile capable of breaking through their armor." }
+               , "-Captain Cryane");
+            FindObjectOfType<dialogueManager>().StartDialogue(dialogue1);
+        }
+        else
+        {
+            fireChoose.SetActive(true);
+            goodAns = GetComponent<Questions>().newQuestion();
+
+        }
+        
         //resets player and camera for next stage
         GameObject player = GameObject.Find("Player");
         player.transform.position = new Vector3(-30f, -40f, player.transform.position.z);
-
         player.transform.rotation = Quaternion.Euler(0, 0, 0);
-
         camera.orthographicSize = 10.0f;
         camera.transform.position = player.transform.position + new Vector3(0.5f, 8f, -2f);
 
@@ -107,7 +119,7 @@ public class GameController : MonoBehaviour {
         animator.SetTrigger("fade_out");
        // SceneManager.LoadScene("InsideShipNew");
     }
-    //checks if player has hit the correct ship and switches 
+    //checks if player has hit the correct ship and switches scenes. 
     public void checkAns(string name)
     {
 
@@ -131,8 +143,13 @@ public class GameController : MonoBehaviour {
         if (System.Convert.ToChar(name) == System.Convert.ToChar(goodAns))
         {
 
-            stageThree();
-            
+           // stageThree();
+            UponLoadTitle.streak++;
+
+        }
+        else
+        {
+            UponLoadTitle.streak = 0;
         }
        
     }
@@ -140,17 +157,19 @@ public class GameController : MonoBehaviour {
     
     public void gameOver()
     {
- 
-        streak = 0;
+        //if the fighter has killed the player this gameover version plays
+        UponLoadTitle.streak = 0;
         if (level == 1)
         {
+           
             GameObject player = GameObject.FindWithTag("Player");
             explosion = Instantiate(explosion, player.transform.position, Quaternion.identity);
             Destroy(explosion, 1.0f);
             Destroy(player);
-
+           
             
         }
+        //otherwise if the boading party hits the ship, this version activates.
         else
         {
             GameObject playerBig = GameObject.FindWithTag("PlayerBig");
@@ -159,6 +178,8 @@ public class GameController : MonoBehaviour {
             Destroy(playerBig);
 
         }
+        AudioManager.instance.Stop();
+        AudioManager.instance.Play("Defeat");
 
         gameOverUI.SetActive(true);
     }

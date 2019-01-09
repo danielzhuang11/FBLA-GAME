@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     Vector3 direction;
     Transform playerPos;
     private Transform enemypos;
-    private float nextActionTime = 0.0f;
+    private float nextActionTime = 0.1f;
     private float period = 0.0f;
     public float speed;
     private Vector3 newPos;

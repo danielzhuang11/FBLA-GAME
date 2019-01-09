@@ -16,7 +16,6 @@ public class dialogueManager : MonoBehaviour {
 
          nextbtn.SetActive(true);
          dialogueActive = true;
-         PauseMenu.GameIsPaused = true;
          sentences = new Queue<string>();
           nameText.text = dialogue.name;
           sentences.Clear();

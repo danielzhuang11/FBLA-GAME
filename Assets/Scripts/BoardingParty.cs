@@ -12,7 +12,7 @@ public class BoardingParty : MonoBehaviour {
 
 	void Start () {
 
-        speed += GameController.streak / 10;
+        speed += UponLoadTitle.streak / 10;
         direction = Vector3.down;
      
 	}

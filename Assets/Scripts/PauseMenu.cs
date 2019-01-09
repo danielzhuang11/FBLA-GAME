@@ -24,12 +24,22 @@ public class PauseMenu : MonoBehaviour {
 
     public void Resume()
     {
-        AudioListener.pause = false;
-            Time.timeScale = 1f;
-            GameIsPaused = false;
-        
-        pauseMenuUI.SetActive(false);
+
+              AudioListener.pause = false;
+              GameIsPaused = false;
+            if (!dialogueManager.dialogueActive)
+                Time.timeScale = 1f;
+            pauseMenuUI.SetActive(false);
     }
+
+    public void resetBtn()
+    {
+        dialogueManager.dialogueActive = false;
+        Time.timeScale = 1f;
+    }
+
+    
+    
 
     void Pause()
     {

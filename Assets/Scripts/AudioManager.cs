@@ -6,7 +6,7 @@ using System;
 
 public class AudioManager : MonoBehaviour {
     public Sound[] sounds;
-
+    
     public static AudioManager instance;
 	// Use this for initialization
     void Awake()
@@ -20,17 +20,14 @@ public class AudioManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
         foreach(Sound s in sounds)
         {
+
             s.source = gameObject.AddComponent<AudioSource>();
+            s.source.outputAudioMixerGroup = s.mixer;
             s.source.clip = s.clip;
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
-
-    }
-    void Start()
-    {
-        Play("Title");
 
     }
 
@@ -40,12 +37,13 @@ public class AudioManager : MonoBehaviour {
         s.source.Play();
 
     }
-
-    public void Stop(string name)
+    
+    public void Stop()
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.source.Stop();
-
+        foreach (Sound audioS in sounds)
+        {
+            audioS.source.Stop();
+        }
     }
 
     public void playRand()
@@ -53,5 +51,7 @@ public class AudioManager : MonoBehaviour {
         sounds[(int)UnityEngine.Random.Range(2, 7)].source.Play();
 
     }
+
+
 
 }
